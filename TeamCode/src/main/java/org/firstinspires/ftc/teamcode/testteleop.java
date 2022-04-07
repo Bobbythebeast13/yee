@@ -1,4 +1,4 @@
-/* Copyright (c) 2017 FIRST. All rights reserved.
+package org.firstinspires.ftc.teamcode;/* Copyright (c) 2017 FIRST. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without modification,
  * are permitted (subject to the limitations in the disclaimer below) provided that
@@ -27,12 +27,11 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.firstinspires.ftc.robotcontroller.external.samples;
-
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.Range;
+
 
 /**
  * This file provides basic Telop driving for a Pushbot robot.
@@ -51,7 +50,7 @@ import com.qualcomm.robotcore.util.Range;
 
 @TeleOp(name="Pushbot: Teleop Tank", group="Pushbot")
 @Disabled
-public class PushbotTeleopTank_Iterative extends OpMode{
+public class testteleop extends OpMode{
 
     /* Declare OpMode members. */
     Hardware robot       = new Hardware(); // use the class created to define a Pushbot's hardware
@@ -69,7 +68,7 @@ public class PushbotTeleopTank_Iterative extends OpMode{
         robot.init(hardwareMap);
 
         // Send telemetry message to signify robot waiting;
-        telemetry.addData("Say", "Hello Driver");    //
+        telemetry.addLine("dont break the bot idiot");    //
     }
 
     /*
@@ -113,8 +112,8 @@ public class PushbotTeleopTank_Iterative extends OpMode{
         robot.rightClaw.setPosition(robot.MID_SERVO - clawOffset);
 
         // Use gamepad buttons to move the arm up (Y) and down (A)
-        if (gamepad1.y)
-            robot.leftArm.setPower(robot.ARM_UP_POWER);
+        if (gamepad1.left_stick_x>.1)
+            robot.leftArm.setPower(robot.ARM_UP_POWER*gamepad1.left_stick_x);
         else if (gamepad1.a)
             robot.leftArm.setPower(robot.ARM_DOWN_POWER);
         else
